@@ -44,8 +44,11 @@
      position result;
 
      result.x = this->x_axis.x * other.x + this->x_axis.y * other.y + this->x_axis.z * other.z;
+
      result.y = this->y_axis.x * other.x + this->y_axis.y * other.y + this->y_axis.z * other.z;
+
      result.z = this->z_axis.x * other.x + this->z_axis.y * other.y + this->z_axis.z * other.z;
+
      return result;
      }
 
@@ -99,13 +102,21 @@
      matrix product;
 
      product.x_axis.x = this->x_axis.x * other.x_axis.x + this->x_axis.y * other.y_axis.x + this->x_axis.z * other.z_axis.x;
+
      product.x_axis.y = this->x_axis.x * other.x_axis.y + this->x_axis.y * other.y_axis.y + this->x_axis.z * other.z_axis.y;
+
      product.x_axis.z = this->x_axis.x * other.x_axis.z + this->x_axis.y * other.y_axis.z + this->x_axis.z * other.z_axis.z;
+
      product.y_axis.x = this->y_axis.x * other.x_axis.x + this->y_axis.y * other.y_axis.x + this->y_axis.z * other.z_axis.x;
+
      product.y_axis.y = this->y_axis.x * other.x_axis.y + this->y_axis.y * other.y_axis.y + this->y_axis.z * other.z_axis.y;
+
      product.y_axis.z = this->y_axis.x * other.x_axis.z + this->y_axis.y * other.y_axis.z + this->y_axis.z * other.z_axis.z;
+
      product.z_axis.x = this->z_axis.x * other.x_axis.x + this->z_axis.y * other.y_axis.x + this->z_axis.z * other.z_axis.x;
+
      product.z_axis.y = this->z_axis.x * other.x_axis.y + this->z_axis.y * other.y_axis.y + this->z_axis.z * other.z_axis.y;
+
      product.z_axis.z = this->z_axis.x * other.x_axis.z + this->z_axis.y * other.y_axis.z + this->z_axis.z * other.z_axis.z;
 
 
