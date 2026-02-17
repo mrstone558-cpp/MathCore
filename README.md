@@ -1,5 +1,5 @@
 # MathCore
-It is a Math library focusing on core principles of linear Algebra. Linear Algebra is the one of the things which power most of the physics block of highly popular `games`. It is also used in embedded engineering, physics simulation, etc.
+It is a Math library focusing on core principles of linear Algebra. Linear Algebra is the one of the things which power most of the physics block of highly popular `games`. It is also used in `embedded engineering`, physics simulation, etc.
 
 ## Use of linear Algebra in Games
 - Object movement & rotation.
