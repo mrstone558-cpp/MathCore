@@ -12,6 +12,14 @@ It is a Math library focusing on core principles of linear Algebra. Linear Algeb
 ## Need of MathCore
 The need of this library is the complexity of Linear Algebra. The linear Algebra is Powerful but hard to implement, so MathCore will help to directly use instead of wasting hours in implementing it.
 
+## Linear Algebra usable stuff
+- vectors
+- matrices 
+- vector * matrix 
+- matrix * matrix 
+- matrix formation with `theta`
+- dot operator
+
 # Conclusion 
 This library can be used not only to perform calculations but also bring numbers to life. This library is still under development so it does not contain everything.
 
