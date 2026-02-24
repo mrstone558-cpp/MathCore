@@ -1,5 +1,5 @@
 #pragma once
-
+ #include <cstdint>
     enum class states{
     idle, behind, perpendicular, facing
     };
@@ -16,8 +16,8 @@
       void modify_y(int b);
       void modify_z(int c);
 
-      int effect(int degree);
-      void process_effect(int constant);
+      float effect(uint16_t degree);
+      void process_effect(uint8_t constant);
    };
 
    class matrix{
