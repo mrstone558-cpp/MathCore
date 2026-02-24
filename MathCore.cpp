@@ -1,5 +1,6 @@
 #include "mathcore.h"
 #include <cmath>
+//#include <cstdint>
 
      states s = states::idle;
 
@@ -11,7 +12,7 @@
      position::y = b;
      }
 
-     int position::effect(int degree){
+     float position::effect(uint16_t degree){
 
      float radian = degree * 3.1415927 / 180;
 
@@ -20,7 +21,7 @@
      return magnitude_of_effect;
      }
 
-     void position::process_effect(int constant){
+     void position::process_effect(uint8_t constant){
 
      if(constant == 1){
      s = states::behind;
@@ -44,11 +45,8 @@
      position result;
 
      result.x = this->x_axis.x * other.x + this->x_axis.y * other.y + this->x_axis.z * other.z;
-
      result.y = this->y_axis.x * other.x + this->y_axis.y * other.y + this->y_axis.z * other.z;
-
      result.z = this->z_axis.x * other.x + this->z_axis.y * other.y + this->z_axis.z * other.z;
-
      return result;
      }
 
@@ -121,7 +119,7 @@
 
 
      return product;
-    }
+     }
 
      void position::modify_z(int c){
      position::z = c;
