@@ -1,43 +1,34 @@
 #include "mathcore.h"
 #include <cmath>
-//#include <cstdint>
 
      states s = states::idle;
 
-     void position::modify_x(int a){
+     void position::modify_x(const int& a){
      position::x = a;
      }
 
-     void position::modify_y(int b){
+     void position::modify_y(const int& b){
      position::y = b;
      }
 
-     float position::effect(uint16_t degree){
-
-     float radian = degree * 3.1415927 / 180;
-
-     float magnitude_of_effect = cos(radian);
-
-     return magnitude_of_effect;
+     void position::modify_z(const int& c){
+     position::z = c;
      }
 
-     void position::process_effect(uint8_t constant){
+     float position::get_magnitude(float& a, position& p){
 
-     if(constant == 1){
-     s = states::behind;
+     a = sqrt(p.x*p.x + p.y*p.y + p.z*p.z );
+     return a;
+
      }
 
-     else if(constant == 0){
-     s = states::perpendicular;
-     }
+     position position::get_normalised_vector(const int& magnitude, position& k){
 
-     else if(constant < 0){
-     s = states::facing;
-     }
+     k.x = k.x / magnitude;
+     k.y = k.y / magnitude;
+     k.z = k.z / magnitude;
 
-     else{
-     s = states::idle;
-     }
+     return k;
      }
 
 
@@ -51,7 +42,48 @@
      }
 
 
-     matrix matrix::move_on_x_axis(float theta){
+
+     matrix matrix::operator+(const matrix& other)const{
+
+     matrix c;
+     c.x_axis.x = this->x_axis.x + other.x_axis.x;
+     c.x_axis.y = this->x_axis.y + other.x_axis.y;
+     c.x_axis.z = this->x_axis.z + other.x_axis.z;
+
+     c.y_axis.x = this->y_axis.x + other.y_axis.x;
+     c.y_axis.y = this->y_axis.y + other.y_axis.y;
+     c.y_axis.z = this->y_axis.z + other.y_axis.z;
+
+     c.z_axis.x = this->z_axis.x + other.z_axis.x;
+     c.z_axis.y = this->z_axis.y + other.z_axis.y;
+     c.z_axis.z = this->z_axis.z + other.z_axis.z;
+
+     return c;
+
+     }
+
+
+
+
+     matrix matrix::operator-(const matrix& other)const{
+
+     matrix c;
+     c.x_axis.x = this->x_axis.x - other.x_axis.x;
+     c.x_axis.y = this->x_axis.y - other.x_axis.y;
+     c.x_axis.z = this->x_axis.z - other.x_axis.z;
+
+     c.y_axis.x = this->y_axis.x - other.y_axis.x;
+     c.y_axis.y = this->y_axis.y - other.y_axis.y;
+     c.y_axis.z = this->y_axis.z - other.y_axis.z;
+
+     c.z_axis.x = this->z_axis.x - other.z_axis.x;
+     c.z_axis.y = this->z_axis.y - other.z_axis.y;
+     c.z_axis.z = this->z_axis.z - other.z_axis.z;
+
+     return c;
+     }
+
+     matrix matrix::move_on_x_axis(const float& theta){
      float radian = theta * 3.1415927 / 180;
      matrix m;
      m.x_axis.x = cos(0);
@@ -66,7 +98,7 @@
      return m;
      }
 
-    matrix matrix::move_on_y_axis(float theta){
+    matrix matrix::move_on_y_axis(const float& theta){
      float y_radian = theta * 3.1415927 / 180;
      matrix n;
      n.x_axis.x = cos(y_radian);
@@ -81,7 +113,7 @@
      return n;
      }
 
-    matrix matrix::move_on_z_axis(float theta){
+    matrix matrix::move_on_z_axis(const float& theta){
      float z_radian = theta * 3.1415927 / 180;
      matrix o;
      o.x_axis.x = cos(z_radian);
@@ -100,45 +132,32 @@
      matrix product;
 
      product.x_axis.x = this->x_axis.x * other.x_axis.x + this->x_axis.y * other.y_axis.x + this->x_axis.z * other.z_axis.x;
-
      product.x_axis.y = this->x_axis.x * other.x_axis.y + this->x_axis.y * other.y_axis.y + this->x_axis.z * other.z_axis.y;
-
      product.x_axis.z = this->x_axis.x * other.x_axis.z + this->x_axis.y * other.y_axis.z + this->x_axis.z * other.z_axis.z;
-
      product.y_axis.x = this->y_axis.x * other.x_axis.x + this->y_axis.y * other.y_axis.x + this->y_axis.z * other.z_axis.x;
-
      product.y_axis.y = this->y_axis.x * other.x_axis.y + this->y_axis.y * other.y_axis.y + this->y_axis.z * other.z_axis.y;
-
      product.y_axis.z = this->y_axis.x * other.x_axis.z + this->y_axis.y * other.y_axis.z + this->y_axis.z * other.z_axis.z;
-
      product.z_axis.x = this->z_axis.x * other.x_axis.x + this->z_axis.y * other.y_axis.x + this->z_axis.z * other.z_axis.x;
-
      product.z_axis.y = this->z_axis.x * other.x_axis.y + this->z_axis.y * other.y_axis.y + this->z_axis.z * other.z_axis.y;
-
      product.z_axis.z = this->z_axis.x * other.x_axis.z + this->z_axis.y * other.y_axis.z + this->z_axis.z * other.z_axis.z;
 
 
      return product;
-     }
+    }
 
-     void position::modify_z(int c){
-     position::z = c;
-     }
-
-
-     void matrix::modify_axisX(int m, int n, int o){
+     void matrix::modify_axisX(const int& m, const int& n, const int& o){
      x_axis.x = m;
      x_axis.y = n;
      x_axis.z = o;
      }
 
-    void matrix::modify_axisY(int j, int k, int l){
+    void matrix::modify_axisY(const int& j, const int& k, const int& l){
     y_axis.x = j;
     y_axis.y = k;
     y_axis.z = l;
     }
 
-    void matrix::modify_axisZ(int p, int q, int r){
+    void matrix::modify_axisZ(const int& p, const int& q, const int& r){
     z_axis.x = p;
     z_axis.y = q;
     z_axis.z = r;
