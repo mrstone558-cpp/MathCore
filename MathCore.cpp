@@ -36,8 +36,11 @@
      position result;
 
      result.x = this->x_axis.x * other.x + this->x_axis.y * other.y + this->x_axis.z * other.z;
+
      result.y = this->y_axis.x * other.x + this->y_axis.y * other.y + this->y_axis.z * other.z;
+
      result.z = this->z_axis.x * other.x + this->z_axis.y * other.y + this->z_axis.z * other.z;
+
      return result;
      }
 
@@ -47,15 +50,21 @@
 
      matrix c;
      c.x_axis.x = this->x_axis.x + other.x_axis.x;
+
      c.x_axis.y = this->x_axis.y + other.x_axis.y;
+
      c.x_axis.z = this->x_axis.z + other.x_axis.z;
 
      c.y_axis.x = this->y_axis.x + other.y_axis.x;
+
      c.y_axis.y = this->y_axis.y + other.y_axis.y;
+
      c.y_axis.z = this->y_axis.z + other.y_axis.z;
 
      c.z_axis.x = this->z_axis.x + other.z_axis.x;
+
      c.z_axis.y = this->z_axis.y + other.z_axis.y;
+
      c.z_axis.z = this->z_axis.z + other.z_axis.z;
 
      return c;
@@ -69,15 +78,21 @@
 
      matrix c;
      c.x_axis.x = this->x_axis.x - other.x_axis.x;
+
      c.x_axis.y = this->x_axis.y - other.x_axis.y;
+
      c.x_axis.z = this->x_axis.z - other.x_axis.z;
 
      c.y_axis.x = this->y_axis.x - other.y_axis.x;
+
      c.y_axis.y = this->y_axis.y - other.y_axis.y;
+
      c.y_axis.z = this->y_axis.z - other.y_axis.z;
 
      c.z_axis.x = this->z_axis.x - other.z_axis.x;
+
      c.z_axis.y = this->z_axis.y - other.z_axis.y;
+
      c.z_axis.z = this->z_axis.z - other.z_axis.z;
 
      return c;
@@ -98,6 +113,7 @@
      return m;
      }
 
+
     matrix matrix::move_on_y_axis(const float& theta){
      float y_radian = theta * 3.1415927 / 180;
      matrix n;
@@ -112,6 +128,7 @@
      n.z_axis.z = cos(y_radian);
      return n;
      }
+
 
     matrix matrix::move_on_z_axis(const float& theta){
      float z_radian = theta * 3.1415927 / 180;
@@ -132,13 +149,21 @@
      matrix product;
 
      product.x_axis.x = this->x_axis.x * other.x_axis.x + this->x_axis.y * other.y_axis.x + this->x_axis.z * other.z_axis.x;
+
      product.x_axis.y = this->x_axis.x * other.x_axis.y + this->x_axis.y * other.y_axis.y + this->x_axis.z * other.z_axis.y;
+
      product.x_axis.z = this->x_axis.x * other.x_axis.z + this->x_axis.y * other.y_axis.z + this->x_axis.z * other.z_axis.z;
+
      product.y_axis.x = this->y_axis.x * other.x_axis.x + this->y_axis.y * other.y_axis.x + this->y_axis.z * other.z_axis.x;
+
      product.y_axis.y = this->y_axis.x * other.x_axis.y + this->y_axis.y * other.y_axis.y + this->y_axis.z * other.z_axis.y;
+
      product.y_axis.z = this->y_axis.x * other.x_axis.z + this->y_axis.y * other.y_axis.z + this->y_axis.z * other.z_axis.z;
+
      product.z_axis.x = this->z_axis.x * other.x_axis.x + this->z_axis.y * other.y_axis.x + this->z_axis.z * other.z_axis.x;
+
      product.z_axis.y = this->z_axis.x * other.x_axis.y + this->z_axis.y * other.y_axis.y + this->z_axis.z * other.z_axis.y;
+
      product.z_axis.z = this->z_axis.x * other.x_axis.z + this->z_axis.y * other.y_axis.z + this->z_axis.z * other.z_axis.z;
 
 
