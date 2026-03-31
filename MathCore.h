@@ -36,10 +36,13 @@
 */
 
       matrix operator+(const matrix& other)const;
+
       matrix operator-(const matrix& other)const;
 
       matrix move_on_x_axis(const float& theta);
+
       matrix move_on_y_axis(const float& theta);
+
       matrix move_on_z_axis(const float& theta);
 
       matrix operator*(const matrix& other)const;
@@ -52,7 +55,9 @@
    };
 
       void modify_axisX(const int& m, const int& n, const int& o);
+
       void modify_axisY(const int& j, const int& k, const int& l);
+
       void modify_axisZ(const int& p, const int& q, const int& r);
 
    axis x_axis;
