@@ -1,4 +1,4 @@
-#pragma once
+ #pragma once
  #include <cstdint>
     enum class states{
     idle, behind, perpendicular, facing
@@ -12,12 +12,15 @@
      int y;
      int z;
 
-      void modify_x(int a);
-      void modify_y(int b);
-      void modify_z(int c);
+      void modify_x(const int& a);
+      void modify_y(const int& b);
+      void modify_z(const int& c);
 
-      float effect(uint16_t degree);
-      void process_effect(uint8_t constant);
+
+      float get_magnitude(float& a, position& p);
+      position get_normalised_vector(const int& magnitude, position& k);
+
+
    };
 
    class matrix{
@@ -32,9 +35,12 @@
       between matrix and matrix
 */
 
-      matrix move_on_x_axis(float theta);
-      matrix move_on_y_axis(float theta);
-      matrix move_on_z_axis(float theta);
+      matrix operator+(const matrix& other)const;
+      matrix operator-(const matrix& other)const;
+
+      matrix move_on_x_axis(const float& theta);
+      matrix move_on_y_axis(const float& theta);
+      matrix move_on_z_axis(const float& theta);
 
       matrix operator*(const matrix& other)const;
 
@@ -45,9 +51,9 @@
 
    };
 
-      void modify_axisX(int m, int n, int o);
-      void modify_axisY(int j, int k, int l);
-      void modify_axisZ(int p, int q, int r);
+      void modify_axisX(const int& m, const int& n, const int& o);
+      void modify_axisY(const int& j, const int& k, const int& l);
+      void modify_axisZ(const int& p, const int& q, const int& r);
 
    axis x_axis;
    axis y_axis;
