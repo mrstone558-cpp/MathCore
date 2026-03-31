@@ -5,4 +5,5 @@ upgrade 1
 - vector * matrix
 - matrix * matrix
 - matrix formation with theta
-- dot operator
+- magnitude
+- normalised vector 
