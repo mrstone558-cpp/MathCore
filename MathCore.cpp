@@ -1,7 +1,20 @@
 #include "mathcore.h"
 #include <cmath>
+//#include <cstdint>
 
-     states s = states::idle;
+     position cross_product(position& given, position& given2){
+
+     position returned;
+
+     returned.x = (given.y * given2.z) - (given.z * given2.y);
+
+     returned.y = (given.z * given2.z) - (given.x * given2.z);
+
+     returned.z = (given.x * given2.y) - (given.y * given2.x);
+
+     return returned;
+
+     }
 
      void position::modify_x(const int& a){
      position::x = a;
@@ -22,6 +35,42 @@
 
      }
 
+
+     position position::operator+(const position& other)const{
+     position result;
+
+     result.x = this->x + other.x;
+     result.y = this->y + other.y;
+     result.z = this->z + other.z;
+
+     return result;
+     }
+
+
+     int position::operator*(const position& other)const{
+
+     int a;
+
+     a = sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
+
+     int b;
+
+     b = sqrt(other.x * other.x + other.y * other.y + other.z * other.z);
+
+
+     uint16_t impact = this->x * other.x + this->y * other.y + this->z * other.z;
+
+
+     int degree = impact / (a * b);
+
+
+     int theta = acos(degree);
+
+     return theta;
+
+     }
+
+
      position position::get_normalised_vector(const int& magnitude, position& k){
 
      k.x = k.x / magnitude;
@@ -31,16 +80,12 @@
      return k;
      }
 
-
      position matrix::operator*(const position& other)const{
      position result;
 
      result.x = this->x_axis.x * other.x + this->x_axis.y * other.y + this->x_axis.z * other.z;
-
      result.y = this->y_axis.x * other.x + this->y_axis.y * other.y + this->y_axis.z * other.z;
-
      result.z = this->z_axis.x * other.x + this->z_axis.y * other.y + this->z_axis.z * other.z;
-
      return result;
      }
 
@@ -50,21 +95,15 @@
 
      matrix c;
      c.x_axis.x = this->x_axis.x + other.x_axis.x;
-
      c.x_axis.y = this->x_axis.y + other.x_axis.y;
-
      c.x_axis.z = this->x_axis.z + other.x_axis.z;
 
      c.y_axis.x = this->y_axis.x + other.y_axis.x;
-
      c.y_axis.y = this->y_axis.y + other.y_axis.y;
-
      c.y_axis.z = this->y_axis.z + other.y_axis.z;
 
      c.z_axis.x = this->z_axis.x + other.z_axis.x;
-
      c.z_axis.y = this->z_axis.y + other.z_axis.y;
-
      c.z_axis.z = this->z_axis.z + other.z_axis.z;
 
      return c;
@@ -78,21 +117,15 @@
 
      matrix c;
      c.x_axis.x = this->x_axis.x - other.x_axis.x;
-
      c.x_axis.y = this->x_axis.y - other.x_axis.y;
-
      c.x_axis.z = this->x_axis.z - other.x_axis.z;
 
      c.y_axis.x = this->y_axis.x - other.y_axis.x;
-
      c.y_axis.y = this->y_axis.y - other.y_axis.y;
-
      c.y_axis.z = this->y_axis.z - other.y_axis.z;
 
      c.z_axis.x = this->z_axis.x - other.z_axis.x;
-
      c.z_axis.y = this->z_axis.y - other.z_axis.y;
-
      c.z_axis.z = this->z_axis.z - other.z_axis.z;
 
      return c;
@@ -113,7 +146,6 @@
      return m;
      }
 
-
     matrix matrix::move_on_y_axis(const float& theta){
      float y_radian = theta * 3.1415927 / 180;
      matrix n;
@@ -128,7 +160,6 @@
      n.z_axis.z = cos(y_radian);
      return n;
      }
-
 
     matrix matrix::move_on_z_axis(const float& theta){
      float z_radian = theta * 3.1415927 / 180;
@@ -186,4 +217,21 @@
     z_axis.x = p;
     z_axis.y = q;
     z_axis.z = r;
+    }
+
+
+    matrix matify(position& x){
+    matrix out;
+
+    out.x_axis.x = x.x;
+    out.x_axis.y = 0;
+    out.x_axis.z = 0;
+    out.y_axis.x = 0;
+    out.y_axis.y = x.y;
+    out.y_axis.z = 0;
+    out.z_axis.x = 0;
+    out.z_axis.y = 0;
+    out.z_axis.z = x.z;
+
+    return out;
     }
