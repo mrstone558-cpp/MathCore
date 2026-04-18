@@ -5,5 +5,7 @@ upgrade 1
 - vector * matrix
 - matrix * matrix
 - matrix formation with theta
-- magnitude
+- magnitude calculation
 - normalised vector 
+- cross product calculation
+- vector to matrix transformation 
