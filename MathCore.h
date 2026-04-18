@@ -1,10 +1,8 @@
- #pragma once
+#pragma once
  #include <cstdint>
-    enum class states{
-    idle, behind, perpendicular, facing
-    };
 
-   //position vector
+
+  //position vector
    class position{
 
      public:
@@ -20,8 +18,12 @@
       float get_magnitude(float& a, position& p);
       position get_normalised_vector(const int& magnitude, position& k);
 
+      position operator+(const position& other)const;
+      int operator*(const position& other)const;
 
    };
+
+    position cross_product(position& given, position& given2);
 
    class matrix{
 
@@ -29,23 +31,19 @@
       /*overloaded * operator for multiplying
       between position and matrix
  */
-      position operator*(const position& other)const;
+position operator*(const position& other)const;
 
       /*overloaded * operator for multiplying
       between matrix and matrix
 */
-
+      matrix operator*(const matrix& other)const;
       matrix operator+(const matrix& other)const;
-
       matrix operator-(const matrix& other)const;
 
       matrix move_on_x_axis(const float& theta);
-
       matrix move_on_y_axis(const float& theta);
-
       matrix move_on_z_axis(const float& theta);
 
-      matrix operator*(const matrix& other)const;
 
      struct axis{
       float x;
@@ -55,9 +53,7 @@
    };
 
       void modify_axisX(const int& m, const int& n, const int& o);
-
       void modify_axisY(const int& j, const int& k, const int& l);
-
       void modify_axisZ(const int& p, const int& q, const int& r);
 
    axis x_axis;
@@ -65,3 +61,5 @@
    axis z_axis;
 
    };
+
+   matrix matify(position& x);
