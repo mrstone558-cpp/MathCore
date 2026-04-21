@@ -80,6 +80,14 @@
      return k;
      }
 
+
+/*     matrix matrix::operator*(double scalar, const matrix& other){
+
+             return matrix(other.x_axis.x * scalar, other.x_axis.y * scalar, other.x_axis.z * scalar, other.y_axis.x * scalar, other.y_axis.y * scalar, other.y_axis.z * scalar, other.z_axis.x * scalar, other.z_axis.y * scalar, other.z_axis.z * scalar);
+
+     }
+*/
+
      position matrix::operator*(const position& other)const{
      position result;
 
@@ -234,4 +242,23 @@
     out.z_axis.z = x.z;
 
     return out;
+    }
+
+    matrix transform(float scalar, const matrix& input){
+
+            matrix output;
+            output.x_axis.x = scalar * input.x_axis.x;
+            output.x_axis.y = scalar * input.x_axis.y;
+            output.x_axis.z = scalar * input.x_axis.z;
+
+            output.y_axis.x = scalar * input.y_axis.x;
+            output.y_axis.y = scalar * input.y_axis.y;
+            output.y_axis.z = scalar * input.y_axis.z;
+
+            output.z_axis.x = scalar * input.z_axis.x;
+            output.z_axis.y = scalar * input.z_axis.y;   
+         output.z_axis.z = scalar * input.z_axis.z;
+
+            return output;
+
     }
