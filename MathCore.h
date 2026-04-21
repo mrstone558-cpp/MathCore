@@ -1,4 +1,4 @@
-#pragma once
+ #pragma once
  #include <cstdint>
 
 
@@ -31,7 +31,8 @@
       /*overloaded * operator for multiplying
       between position and matrix
  */
-position operator*(const position& other)const;
+
+      position operator*(const position& other)const;
 
       /*overloaded * operator for multiplying
       between matrix and matrix
@@ -63,3 +64,5 @@ position operator*(const position& other)const;
    };
 
    matrix matify(position& x);
+
+   matrix transform(float scalar, const matrix& input);
